@@ -11,6 +11,7 @@ export default function RootLayout() {
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="home" color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen

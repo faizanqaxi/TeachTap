@@ -1,0 +1,17 @@
+{
+  "type": "mcq",
+  "id": 3219,
+  "playlist": "Period 6: 1865-1898",
+  "description": "5.5 Sectional Conflict: Regional Differences #apush",
+  "image": "https://cross-platform-rwa.rp.devfactory.com/images/3219%20-%20Protestants%20face%20nativists%20in%201800s.png",
+  "question": "Which of the following groups was not a common target for nativists in the 1800's?",
+  "options": [
+    { "id": "A", "answer": "Protestants" },
+    { "id": "B", "answer": "Catholics" },
+    { "id": "C", "answer": "Chinese" }
+  ],
+  "user": {
+    "name": "AP US History",
+    "avatar": "https://cross-platform-rwa.rp.devfactory.com/avatars/apush.png"
+  }
+}
