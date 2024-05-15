@@ -40,7 +40,7 @@ export const DummyData = [
     description: "5.5 Sectional Conflict: Regional Differences #apush",
     image:
       "https://cross-platform-rwa.rp.devfactory.com/images/3219%20-%20Protestants%20face%20nativists%20in%201800s.png",
-    question: "Third question",
+    question: "Third question about philosophy",
     options: [
       { id: "A", answer: "Option A Third question" },
       { id: "B", answer: "Option B Third question" },
