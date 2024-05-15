@@ -36,17 +36,57 @@ export default function FeedItem({ item }: { item: ContentItem }) {
         </View>
         {/* End Top Bar */}
 
-        <View style={styles.contentContainer}>
-          <Text style={styles.question}>{item.question}</Text>
-          <View style={styles.options}>
-            {item.options.map((option, index) => (
-              <Text key={index} style={styles.option}>
-                {option.answer}
-              </Text>
-            ))}
+        <View style={styles.innerContainer}>
+          <View style={styles.contentContainer}>
+            <Text style={styles.question}>{item.question}</Text>
+            <View style={styles.optionsContainer}>
+              {item.options.map((option, index) => (
+                <Text key={index} style={styles.option}>
+                  {option.answer}
+                </Text>
+              ))}
+            </View>
+
+            <View style={styles.bottomContent}>
+              <Text style={styles.author}>{item.user.name}</Text>
+              <Text style={styles.description}>{item.description}</Text>
+            </View>
           </View>
-          <Text style={styles.author}>{item.user.name}</Text>
-          <Text style={styles.description}>{item.description}</Text>
+
+          {/* Action Icons */}
+          <View style={styles.actionIcons}>
+            <Ionicons
+              style={styles.actionIcon}
+              name="share"
+              size={35}
+              color="#fff"
+            />
+            <Ionicons
+              style={styles.actionIcon}
+              name="bookmark"
+              size={35}
+              color="#fff"
+            />
+            <Ionicons
+              style={styles.actionIcon}
+              name="chatbubble"
+              size={35}
+              color="#fff"
+            />
+            <Ionicons
+              style={styles.actionIcon}
+              name="heart"
+              size={35}
+              color="#fff"
+            />
+            <Ionicons
+              style={styles.actionIcon}
+              name="add"
+              size={35}
+              color="#fff"
+            />
+          </View>
+          {/* End Action Icons */}
         </View>
       </ImageBackground>
     </TouchableOpacity>
@@ -98,25 +138,42 @@ const styles = StyleSheet.create({
     bottom: -4, // Adjust bottom position to fit the indicator below the "For You" text
     left: 0, // Align indicator with the left edge of the "For You" text
   },
+  innerContainer: {
+    flex: 1,
+    flexDirection: "row",
+  },
   contentContainer: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     paddingHorizontal: 16,
     paddingVertical: 24,
+  },
+  questionContainer: {
+    marginBottom: 8,
   },
   question: {
     fontSize: 18,
     fontWeight: "bold",
     color: "#fff",
     marginBottom: 8,
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    padding: 10,
+    borderRadius: 8,
   },
-  options: {
+  optionsContainer: {
+    marginTop: "auto",
     marginBottom: 8,
   },
   option: {
     fontSize: 16,
     color: "#fff",
-    marginBottom: 4,
+    marginBottom: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
+    padding: 13,
+    borderRadius: 8,
+  },
+  bottomContent: {
+    marginBottom: 50,
   },
   author: {
     fontSize: 14,
@@ -125,5 +182,16 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 14,
     color: "#fff",
+  },
+  actionIcons: {
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    padding: 8,
+    marginBottom: 30,
+    borderRadius: 8,
+  },
+  actionIcon: {
+    marginBottom: 20,
   },
 });
