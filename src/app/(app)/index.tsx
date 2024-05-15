@@ -23,7 +23,7 @@ export default function HomeScreen() {
         renderItem={({ item }) => <FeedItem item={item} />}
         keyExtractor={(item) => item.id.toString()}
         pagingEnabled
-        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        contentContainerStyle={{ justifyContent: "center" }}
       />
     </View>
   );
