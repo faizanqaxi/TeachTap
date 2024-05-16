@@ -5,7 +5,6 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
-  Dimensions,
 } from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { ContentItem } from "../types";
@@ -23,7 +22,9 @@ export default function FeedItem({ item }: { item: ContentItem }) {
   const { height } = useWindowDimensions();
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [selectedOption, setSelectedOption] = useState<null | number>(null); // Corrected state declaration
+  const [correctOption, setCorrectOption] = useState("");
 
+  // Timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeElapsed((prevTime) => prevTime + 1);
@@ -31,6 +32,27 @@ export default function FeedItem({ item }: { item: ContentItem }) {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Fetching Correct Answer
+  useEffect(() => {
+    fetchAnswer();
+  }, []);
+
+  const fetchAnswer = async () => {
+    try {
+      const response = await fetch(
+        `https://cross-platform.rp.devfactory.com/reveal?id=${item.id}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      const correctOptionId = data.correct_options[0].id;
+      setCorrectOption(correctOptionId);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const formatTime = (minutes: number) => {
     const hours = Math.floor(minutes / 60);

@@ -26,7 +26,6 @@ export default function HomeScreen() {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      console.log("data: ", data);
       setContent([data]);
       setLoading(false);
     } catch (error) {
