@@ -7,7 +7,7 @@ import {
   ImageBackground,
   Dimensions,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; // Import Ionicons for the icons
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { ContentItem } from "../types";
 import { useWindowDimensions } from "react-native";
 
@@ -63,9 +63,20 @@ export default function FeedItem({ item }: { item: ContentItem }) {
 
           {/* Action Icons */}
           <View style={styles.actionIcons}>
-            {/* <View style={styles.actionIcon}>
-              <PlaylistIcon width={35} height={35} />
-            </View> */}
+            <View
+              style={[
+                styles.actionIcon,
+                {
+                  backgroundColor: "#ad6f28",
+                  borderRadius: 100,
+                  padding: 10,
+                  borderWidth: 2,
+                  borderColor: "white",
+                },
+              ]}
+            >
+              <FontAwesome5 size={28} name="scroll" color="#fac107" />
+            </View>
             <View style={styles.actionIcon}>
               <HeartIcon width={35} height={35} />
             </View>
