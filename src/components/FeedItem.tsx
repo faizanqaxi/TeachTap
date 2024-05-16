@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -21,6 +21,21 @@ import SearchIcon from "../../assets/search.svg";
 
 export default function FeedItem({ item }: { item: ContentItem }) {
   const { height } = useWindowDimensions();
+  const [timeElapsed, setTimeElapsed] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeElapsed((prevTime) => prevTime + 1);
+    }, 60000); // Update every minute (60,000 milliseconds)
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (minutes: number) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours > 0 ? hours + "h" : ""} ${remainingMinutes}m`;
+  };
 
   return (
     <TouchableOpacity style={[styles.card, { height: height }]}>
@@ -32,7 +47,7 @@ export default function FeedItem({ item }: { item: ContentItem }) {
         <View style={styles.topBar}>
           <View style={styles.left}>
             <ActivityIcon width={24} height={24} />
-            <Text style={styles.timerText}>10m</Text>
+            <Text style={styles.timerText}>{formatTime(timeElapsed)}</Text>
           </View>
           <View style={styles.forYouContainer}>
             <Text style={styles.forYouText}>For You</Text>
