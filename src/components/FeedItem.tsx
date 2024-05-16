@@ -49,7 +49,7 @@ export default function FeedItem({ item }: { item: ContentItem }) {
             <Text style={styles.question}>{item.question}</Text>
             <View style={styles.optionsContainer}>
               {item.options.map((option, index) => (
-                <Text key={index} style={styles.option}>
+                <Text key={index} style={styles.optionText}>
                   {option.answer}
                 </Text>
               ))}
@@ -96,6 +96,14 @@ export default function FeedItem({ item }: { item: ContentItem }) {
           </View>
           {/* End Action Icons */}
         </View>
+
+        {/* Playlist */}
+        <View style={styles.playlistContainer}>
+          <View style={styles.playlistIcon}>
+            <PlaylistIcon width={20} height={20} />
+          </View>
+          <Text style={styles.playlistText}>Playlist: {item.playlist}</Text>
+        </View>
       </ImageBackground>
     </TouchableOpacity>
   );
@@ -140,11 +148,11 @@ const styles = StyleSheet.create({
   },
   indicator: {
     backgroundColor: "white",
-    height: 2, // Adjust the height of the indicator as needed
-    width: "100%", // Set width to 100% to span beneath the "For You" text
-    position: "absolute", // Position indicator absolutely to overlap with "For You" text
-    bottom: -4, // Adjust bottom position to fit the indicator below the "For You" text
-    left: 0, // Align indicator with the left edge of the "For You" text
+    height: 2,
+    width: "100%",
+    position: "absolute",
+    bottom: -4,
+    left: 0,
   },
   innerContainer: {
     flex: 1,
@@ -152,7 +160,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    // justifyContent: "center",
     paddingHorizontal: 16,
     paddingVertical: 24,
   },
@@ -172,20 +179,24 @@ const styles = StyleSheet.create({
     marginTop: "auto",
     marginBottom: 8,
   },
-  option: {
+  optionText: {
     fontSize: 16,
     color: "#fff",
     marginBottom: 10,
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     padding: 13,
     borderRadius: 8,
+    textShadowColor: "black",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
   bottomContent: {
-    marginBottom: 50,
+    marginBottom: 0,
   },
   author: {
     fontSize: 14,
     color: "#fff",
+    fontWeight: "bold",
   },
   description: {
     fontSize: 14,
@@ -205,5 +216,21 @@ const styles = StyleSheet.create({
   },
   actionIconText: {
     color: "white",
+  },
+  playlistContainer: {
+    flexDirection: "row",
+    padding: 7,
+    marginTop: "auto",
+    marginBottom: 50,
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+  },
+  playlistIcon: {
+    marginLeft: 10,
+    alignItems: "center",
+  },
+  playlistText: {
+    color: "#fff",
+    fontSize: 13,
+    marginLeft: 10,
   },
 });
