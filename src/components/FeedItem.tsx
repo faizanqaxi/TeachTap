@@ -22,6 +22,7 @@ import SearchIcon from "../../assets/search.svg";
 export default function FeedItem({ item }: { item: ContentItem }) {
   const { height } = useWindowDimensions();
   const [timeElapsed, setTimeElapsed] = useState(0);
+  const [selectedOption, setSelectedOption] = useState<null | number>(null); // Corrected state declaration
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -35,6 +36,10 @@ export default function FeedItem({ item }: { item: ContentItem }) {
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
     return `${hours > 0 ? hours + "h" : ""} ${remainingMinutes}m`;
+  };
+
+  const handleOptionPress = (index: number) => {
+    setSelectedOption(index);
   };
 
   return (
@@ -64,9 +69,29 @@ export default function FeedItem({ item }: { item: ContentItem }) {
             <Text style={styles.question}>{item.question}</Text>
             <View style={styles.optionsContainer}>
               {item.options.map((option, index) => (
-                <Text key={index} style={styles.optionText}>
-                  {option.answer}
-                </Text>
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleOptionPress(index)}
+                  disabled={selectedOption !== null} // Disable options after selection
+                >
+                  <Text
+                    style={[
+                      styles.optionText,
+                      {
+                        backgroundColor:
+                          selectedOption === null
+                            ? "rgba(255, 255, 255, 0.5)"
+                            : index === selectedOption
+                            ? selectedOption === 0
+                              ? "green"
+                              : "red"
+                            : "rgba(255, 255, 255, 0.5)",
+                      },
+                    ]}
+                  >
+                    {option.answer}
+                  </Text>
+                </TouchableOpacity>
               ))}
             </View>
 
