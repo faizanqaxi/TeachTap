@@ -1,9 +1,9 @@
 import { Tabs } from "expo-router";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Image } from "react-native";
-import * as Svg from "react-native-svg";
-
 import HomeIcon from "../../assets/home.svg";
+import DiscoverIcon from "../../assets/discover.svg";
+import ActivityIcon from "../../assets/activity.svg";
+import BookmarkIcon from "../../assets/bookmark.svg";
+import ProfileIcon from "../../assets/profile.svg";
 
 export default function RootLayout() {
   return (
@@ -17,12 +17,8 @@ export default function RootLayout() {
         name="(app)/index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => (
-            // <Image
-            //   source={require("../../assets/favicon.png")}
-            //   style={{ width: 28, height: 28 }}
-            // />
-            <HomeIcon width={28} height={28} />
+          tabBarIcon: ({ focused }) => (
+            <HomeIcon width={28} height={28} fillOpacity={focused ? 1 : 0.4} />
           ),
           headerShown: false,
         }}
@@ -31,8 +27,12 @@ export default function RootLayout() {
         name="(app)/discover"
         options={{
           title: "Discover",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="search" color={color} />
+          tabBarIcon: ({ focused }) => (
+            <DiscoverIcon
+              width={28}
+              height={28}
+              fillOpacity={focused ? 1 : 0.4}
+            />
           ),
         }}
       />
@@ -40,8 +40,12 @@ export default function RootLayout() {
         name="(app)/activity"
         options={{
           title: "Activity",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="times-circle" color={color} />
+          tabBarIcon: ({ focused }) => (
+            <ActivityIcon
+              width={28}
+              height={28}
+              fillOpacity={focused ? 1 : 0.4}
+            />
           ),
         }}
       />
@@ -49,8 +53,12 @@ export default function RootLayout() {
         name="(app)/bookmark"
         options={{
           title: "Bookmark",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="bookmark" color={color} />
+          tabBarIcon: ({ focused }) => (
+            <BookmarkIcon
+              width={28}
+              height={28}
+              fillOpacity={focused ? 1 : 0.4}
+            />
           ),
         }}
       />
@@ -58,8 +66,12 @@ export default function RootLayout() {
         name="(app)/profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="user" color={color} />
+          tabBarIcon: ({ focused }) => (
+            <ProfileIcon
+              width={28}
+              height={28}
+              fillOpacity={focused ? 1 : 0.4}
+            />
           ),
         }}
       />
