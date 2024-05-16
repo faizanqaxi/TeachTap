@@ -1,15 +1,28 @@
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Image } from "react-native";
+import * as Svg from "react-native-svg";
+
+import HomeIcon from "../../assets/home.svg";
 
 export default function RootLayout() {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: { backgroundColor: "black" },
+        tabBarActiveTintColor: "white",
+      }}
+    >
       <Tabs.Screen
         name="(app)/index"
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+            // <Image
+            //   source={require("../../assets/favicon.png")}
+            //   style={{ width: 28, height: 28 }}
+            // />
+            <HomeIcon width={28} height={28} />
           ),
           headerShown: false,
         }}
