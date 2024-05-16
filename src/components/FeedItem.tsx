@@ -11,6 +11,14 @@ import { Ionicons } from "@expo/vector-icons"; // Import Ionicons for the icons
 import { ContentItem } from "../types";
 import { useWindowDimensions } from "react-native";
 
+import ShareIcon from "../../assets/share.svg";
+import BookmarkIcon from "../../assets/bookmark.svg";
+import CommentIcon from "../../assets/comment.svg";
+import HeartIcon from "../../assets/heart.svg";
+import PlaylistIcon from "../../assets/playlist.svg";
+import ActivityIcon from "../../assets/activity.svg";
+import SearchIcon from "../../assets/search.svg";
+
 export default function FeedItem({ item }: { item: ContentItem }) {
   const { height } = useWindowDimensions();
 
@@ -23,7 +31,7 @@ export default function FeedItem({ item }: { item: ContentItem }) {
         {/* Top Bar */}
         <View style={styles.topBar}>
           <View style={styles.left}>
-            <Ionicons name="timer" size={24} color="white" />
+            <ActivityIcon width={24} height={24} />
             <Text style={styles.timerText}>10m</Text>
           </View>
           <View style={styles.forYouContainer}>
@@ -31,7 +39,7 @@ export default function FeedItem({ item }: { item: ContentItem }) {
             <View style={styles.indicator} />
           </View>
           <TouchableOpacity>
-            <Ionicons name="search" size={24} color="white" />
+            <SearchIcon width={24} height={24} />
           </TouchableOpacity>
         </View>
         {/* End Top Bar */}
@@ -55,36 +63,21 @@ export default function FeedItem({ item }: { item: ContentItem }) {
 
           {/* Action Icons */}
           <View style={styles.actionIcons}>
-            <Ionicons
-              style={styles.actionIcon}
-              name="share"
-              size={35}
-              color="#fff"
-            />
-            <Ionicons
-              style={styles.actionIcon}
-              name="bookmark"
-              size={35}
-              color="#fff"
-            />
-            <Ionicons
-              style={styles.actionIcon}
-              name="chatbubble"
-              size={35}
-              color="#fff"
-            />
-            <Ionicons
-              style={styles.actionIcon}
-              name="heart"
-              size={35}
-              color="#fff"
-            />
-            <Ionicons
-              style={styles.actionIcon}
-              name="add"
-              size={35}
-              color="#fff"
-            />
+            {/* <View style={styles.actionIcon}>
+              <PlaylistIcon width={35} height={35} />
+            </View> */}
+            <View style={styles.actionIcon}>
+              <HeartIcon width={35} height={35} />
+            </View>
+            <View style={styles.actionIcon}>
+              <CommentIcon width={35} height={35} />
+            </View>
+            <View style={styles.actionIcon}>
+              <BookmarkIcon width={35} height={35} />
+            </View>
+            <View style={styles.actionIcon}>
+              <ShareIcon width={35} height={35} />
+            </View>
           </View>
           {/* End Action Icons */}
         </View>
@@ -188,10 +181,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
     padding: 8,
-    marginBottom: 30,
+    marginBottom: 60,
     borderRadius: 8,
   },
   actionIcon: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
 });
