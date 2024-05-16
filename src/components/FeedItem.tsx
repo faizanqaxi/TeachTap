@@ -79,15 +79,19 @@ export default function FeedItem({ item }: { item: ContentItem }) {
             </View>
             <View style={styles.actionIcon}>
               <HeartIcon width={35} height={35} />
+              <Text style={styles.actionIconText}>87</Text>
             </View>
             <View style={styles.actionIcon}>
               <CommentIcon width={35} height={35} />
+              <Text style={styles.actionIconText}>2</Text>
             </View>
             <View style={styles.actionIcon}>
               <BookmarkIcon width={35} height={35} />
+              <Text style={styles.actionIconText}>203</Text>
             </View>
             <View style={styles.actionIcon}>
               <ShareIcon width={35} height={35} />
+              <Text style={styles.actionIconText}>17</Text>
             </View>
           </View>
           {/* End Action Icons */}
@@ -196,6 +200,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   actionIcon: {
-    marginBottom: 30,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  actionIconText: {
+    color: "white",
   },
 });
