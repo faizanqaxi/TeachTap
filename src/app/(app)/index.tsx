@@ -46,12 +46,11 @@ export default function HomeScreen() {
       ) : (
         <FlatList
           data={content}
-          renderItem={({ item, index }) => (
-            <FeedItem key={index.toString()} item={item} />
-          )}
+          renderItem={({ item }) => <FeedItem item={item} />}
+          keyExtractor={(item, index) => index.toString()}
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
-          // pagingEnabled
+          pagingEnabled
           contentContainerStyle={{ justifyContent: "center" }}
         />
       )}
