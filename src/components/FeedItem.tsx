@@ -103,10 +103,10 @@ export default function FeedItem({ item }: { item: ContentItem }) {
                         backgroundColor:
                           selectedOption === null
                             ? "rgba(255, 255, 255, 0.5)"
-                            : index === selectedOption
-                            ? selectedOption === 0
-                              ? "green"
-                              : "red"
+                            : correctOption === option.id
+                            ? "green"
+                            : selectedOption === index
+                            ? "red"
                             : "rgba(255, 255, 255, 0.5)",
                       },
                     ]}
