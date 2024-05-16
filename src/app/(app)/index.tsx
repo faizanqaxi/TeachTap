@@ -26,7 +26,7 @@ export default function HomeScreen() {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      setContent([data]);
+      setContent((prevContent) => [...prevContent, data]); // Wrap data in an array before spreading
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -34,17 +34,24 @@ export default function HomeScreen() {
     }
   };
 
+  const handleEndReached = () => {
+    fetchContent(); // Fetch new content each time the end of the list is reached
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar />
       {loading ? (
-        <ActivityIndicator style={styles.loading}></ActivityIndicator>
+        <ActivityIndicator style={styles.loading} />
       ) : (
         <FlatList
           data={content}
-          renderItem={({ item }) => <FeedItem item={item} />}
-          keyExtractor={(item) => item.id.toString()}
-          pagingEnabled
+          renderItem={({ item, index }) => (
+            <FeedItem key={index.toString()} item={item} />
+          )}
+          onEndReached={handleEndReached}
+          onEndReachedThreshold={0.5}
+          // pagingEnabled
           contentContainerStyle={{ justifyContent: "center" }}
         />
       )}
